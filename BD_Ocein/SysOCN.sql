@@ -83,3 +83,16 @@ CREATE TABLE IF NOT EXISTS Cargo(
     FOREIGN KEY(LugarID)
     REFERENCES Lugares(LugarID)
 )ENGINE=INNODB;
+
+CREATE TABLE IF NOT EXISTS DocDatos(
+	DocID INT NOT NULL,
+    NombreTecnico VARCHAR(50),
+    Descrpción VARCHAR(400),
+    FechaInicio DATE,
+    FechaFin DATE,
+    PRIMARY KEY(DocID),
+    CargoID INT NOT NULL,
+    CONSTRAINT fkCargo_DocDatos
+    FOREIGN KEY(CargoID)
+    REFERENCES Cargo(CargoID)
+)ENGINE=INNODB;
