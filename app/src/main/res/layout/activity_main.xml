@@ -9,8 +9,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/appCompatImageView"
-        android:layout_width="410dp"
-        android:layout_height="464dp"
+        android:layout_width="352dp"
+        android:layout_height="368dp"
         android:background="#64B5F6"
         android:src="@drawable/servicio"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,20 +22,33 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/guardar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="315dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="495dp"
-        android:background="@color/colorPrueba"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/sombra"
+        android:backgroundTint="#2196F3"
         android:text="Guardar"
         android:textColor="@color/colorBlanco"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.916"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/appCompatImageView"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.73"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="388dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
 
