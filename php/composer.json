@@ -1,0 +1,15 @@
+{
+    "name": "parzibyte/crear_wor-php",
+    "description": "Trabajar con Word y PHP",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ArthourVaSa",
+            "email": "arjavasaes21@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpword": "dev-master"
+    }
+}
