@@ -7,15 +7,27 @@
     android:background="@color/colorFondo"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="410dp"
-        android:layout_height="464dp"
-        android:background="#64B5F6"
-        android:src="@drawable/serviceTecno"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="410dp"
+            android:layout_height="464dp"
+            android:background="#64B5F6"
+            android:src="@drawable/serviceTecno"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+    </RelativeLayout>
+
 
     <Button
         android:id="@+id/guardar"
