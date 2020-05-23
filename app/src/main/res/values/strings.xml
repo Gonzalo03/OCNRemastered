@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OCN</string>
+    <string name="nombretecnico">Nombre del Técnico</string>
 </resources>
