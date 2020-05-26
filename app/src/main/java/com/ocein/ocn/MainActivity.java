@@ -5,80 +5,102 @@ import android.os.Environment;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.loopj.android.http.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity{
 
-    private AsyncHttpClient cliente;
-    private Spinner spinner;
-
-    TextView testeo;
+    ListView listaNombre;
+    List<String> listTitle;
+    TextView nombre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        cliente = new AsyncHttpClient();
-        spinner = findViewById(R.id.spinner);
-        testeo = findViewById(R.id.testeo);
+        listaNombre = findViewById(R.id.listaNombre);
+        nombre = findViewById(R.id.nombre);
 
-        llenarSpinner();
-
-    }
-
-    private void llenarSpinner(){
-        String url = "https://ocnremastered.000webhostapp.com/spinner.php";
-        cliente.post(url, new AsyncHttpResponseHandler() {
+        iniciarBusqueda();
+        listaNombre.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                if(statusCode == 200){
-                    cargarSpinner(new String(responseBody));
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String query = parent.getItemAtPosition(position).toString();
+                nombre.setText(query);
             }
         });
+
     }
 
-    private void cargarSpinner(String respuesta) {
-        ArrayList<Lugares> lista = new ArrayList<Lugares>();
+    public void iniciarBusqueda(){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "https://ocnremastered.000webhostapp.com/spinner.php";
 
-        try {
-            JSONArray jsonArreglo = new JSONArray(respuesta);
-
-            for (int i=0; i<jsonArreglo.length(); i++){
-                Lugares l = new Lugares();
-                l.setNombre(jsonArreglo.getJSONObject(i).getString("Nombre"));
-                lista.add(l);
-
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(response.length()>0){
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
+                        traerDatos(jsonArray);
+                    }catch (JSONException jsonException1){
+                        Toast.makeText(getApplicationContext(),"ERROR JSON 1 "+ jsonException1.toString(),Toast.LENGTH_LONG).show();
+                    }
+                }
             }
-            ArrayAdapter<Lugares> a = new ArrayAdapter<Lugares>(this, android.R.layout.simple_dropdown_item_1line, lista);
-            spinner.setAdapter(a);
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),"ERROR VOLLEY "+ error.toString(),Toast.LENGTH_LONG).show();
+            }
+        });
 
+        queue.add(stringRequest);
+    }
 
-        }catch (Exception e){
-            e.printStackTrace();
+    public void traerDatos(JSONArray jsonArray){
+        listTitle = new ArrayList<>();
+        try {
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String title = jsonObject.getString("Nombre");
+                listTitle.add(title);
+            }
+        }catch (JSONException jsonException2){
+            Toast.makeText(getApplicationContext(), "ERROR JSON 2 "+jsonException2.toString(), Toast.LENGTH_LONG).show();
         }
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item,listTitle);
+        listaNombre.setAdapter(adapter);
+
     }
+
 
 }
