@@ -1,5 +1,6 @@
 package com.ocein.ocn;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.Editable;
@@ -103,4 +104,9 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
+    public void agregarPC(View view) {
+        Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
+        intent.putExtra("pc", nombre.getText().toString());
+        startActivity(intent);
+    }
 }
