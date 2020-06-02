@@ -1,111 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorFondo"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/nombre"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="15dp"
-        android:hint="Facultad"
-        android:textColorHint="@color/colorBlanco"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <ListView
-        android:id="@+id/listaNombre"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="56dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView"
-        android:layout_width="414dp"
-        android:layout_height="424dp"
-        android:background="#64B5F6"
-        android:src="@drawable/servicio"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn1"
-        android:layout_width="315dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="56dp"
-        android:background="@drawable/sombra"
-        android:backgroundTint="#2196F3"
-        android:text="btn1"
-        android:textColor="@color/colorBlanco"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listaNombre"
-        tools:ignore="MissingConstraints,UnknownId" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerInParent="true">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn2"
-        android:layout_width="315dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/sombra"
-        android:backgroundTint="#2196F3"
-        android:text="btn2"
-        android:textColor="@color/colorBlanco"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn1"
-        tools:ignore="MissingConstraints" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/appCompatImageView"
+                    android:layout_width="410dp"
+                    android:layout_height="420dp"
+                    android:background="#64B5F6"
+                    android:src="@drawable/servicio"
+                    android:layout_marginTop="150dp"
+                    app:layout_anchorGravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints,NotSibling" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn3"
-        android:layout_width="315dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/sombra"
-        android:backgroundTint="#2196F3"
-        android:text="btn3"
-        android:textColor="@color/colorBlanco"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn2"
-        tools:ignore="MissingConstraints" />
+            </RelativeLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn4"
-        android:layout_width="315dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/sombra"
-        android:backgroundTint="#2196F3"
-        android:text="btn3"
-        android:textColor="@color/colorBlanco"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn3"
-        tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginStart="175dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:hint="Facultad"
+                android:textColorHint="@color/colorBlanco"
+                android:textSize="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
 
+            <ListView
+                android:id="@+id/listaNombre"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="56dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nombre"
+                tools:ignore="MissingConstraints" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="300dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn1"
+                    android:layout_width="315dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/sombra"
+                    android:backgroundTint="#2196F3"
+                    android:layout_marginStart="50dp"
+                    android:text="btn1"
+                    android:textColor="@color/colorBlanco"
+                    tools:ignore="MissingConstraints,UnknownId" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn2"
+                    android:layout_width="315dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/sombra"
+                    android:backgroundTint="#2196F3"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:text="btn2"
+                    android:textColor="@color/colorBlanco"
+                    tools:ignore="MissingConstraints" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn3"
+                    android:layout_width="315dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/sombra"
+                    android:backgroundTint="#2196F3"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:text="btn3"
+                    android:textColor="@color/colorBlanco"
+                    tools:ignore="MissingConstraints" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn4"
+                    android:layout_width="315dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/sombra"
+                    android:backgroundTint="#2196F3"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:text="btn4"
+                    android:textColor="@color/colorBlanco"
+                    tools:ignore="MissingConstraints" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
